@@ -81,17 +81,17 @@ For the full documentation, please see the API reference below.
     * [.face](#Client.face) : <code>object</code>
         * _static_
             * [.faceList](#Client.face.faceList) : <code>object</code>
-                * [.list()](#Client.face.faceList.list) ⇒ <code>Promise</code>
+                * [.list(options)](#Client.face.faceList.list) ⇒ <code>Promise</code>
                 * [.create(faceListId, options)](#Client.face.faceList.create) ⇒ <code>Promise</code>
                 * [.update(faceListId, options)](#Client.face.faceList.update) ⇒ <code>Promise</code>
                 * [.delete(faceListId)](#Client.face.faceList.delete) ⇒ <code>Promise</code>
-                * [.get(faceListId)](#Client.face.faceList.get) ⇒ <code>Promise</code>
+                * [.get(faceListId, options)](#Client.face.faceList.get) ⇒ <code>Promise</code>
                 * [.addFace(faceListId, options)](#Client.face.faceList.addFace) ⇒ <code>Promise</code>
                 * [.deleteFace(faceListId, persistedFaceId)](#Client.face.faceList.deleteFace) ⇒ <code>Promise</code>
             * [.personGroup](#Client.face.personGroup) : <code>object</code>
-                * [.create(personGroupId, name, userData)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
+                * [.create(personGroupId, name, userData, recognitionModel)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
                 * [.delete(personGroupId)](#Client.face.personGroup.delete) ⇒ <code>Promise</code>
-                * [.get(personGroupId)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
+                * [.get(personGroupId, options)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
                 * [.trainingStatus(personGroupId)](#Client.face.personGroup.trainingStatus) ⇒ <code>Promise</code>
                 * [.trainingStart(personGroupId)](#Client.face.personGroup.trainingStart) ⇒ <code>Promise</code>
                 * [.update(personGroupId, name, userData)](#Client.face.personGroup.update) ⇒ <code>Promise</code>
@@ -107,9 +107,9 @@ For the full documentation, please see the API reference below.
                 * [.update(personGroupId, personId, name, userData)](#Client.face.person.update) ⇒ <code>Promise</code>
                 * [.list(personGroupId)](#Client.face.person.list) ⇒ <code>Promise</code>
             * [.largePersonGroup](#Client.face.largePersonGroup) : <code>object</code>
-                * [.create(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
+                * [.create(largePersonGroupId, name, userData, recognitionModel)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
                 * [.delete(largePersonGroupId)](#Client.face.largePersonGroup.delete) ⇒ <code>Promise</code>
-                * [.get(largePersonGroupId)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
+                * [.get(largePersonGroupId, options)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
                 * [.trainingStatus(largePersonGroupId)](#Client.face.largePersonGroup.trainingStatus) ⇒ <code>Promise</code>
                 * [.trainingStart(largePersonGroupId)](#Client.face.largePersonGroup.trainingStart) ⇒ <code>Promise</code>
                 * [.update(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.update) ⇒ <code>Promise</code>
@@ -191,17 +191,17 @@ Analyze the emotions of one or more faces in an image.
 * [.face](#Client.face) : <code>object</code>
     * _static_
         * [.faceList](#Client.face.faceList) : <code>object</code>
-            * [.list()](#Client.face.faceList.list) ⇒ <code>Promise</code>
+            * [.list(options)](#Client.face.faceList.list) ⇒ <code>Promise</code>
             * [.create(faceListId, options)](#Client.face.faceList.create) ⇒ <code>Promise</code>
             * [.update(faceListId, options)](#Client.face.faceList.update) ⇒ <code>Promise</code>
             * [.delete(faceListId)](#Client.face.faceList.delete) ⇒ <code>Promise</code>
-            * [.get(faceListId)](#Client.face.faceList.get) ⇒ <code>Promise</code>
+            * [.get(faceListId, options)](#Client.face.faceList.get) ⇒ <code>Promise</code>
             * [.addFace(faceListId, options)](#Client.face.faceList.addFace) ⇒ <code>Promise</code>
             * [.deleteFace(faceListId, persistedFaceId)](#Client.face.faceList.deleteFace) ⇒ <code>Promise</code>
         * [.personGroup](#Client.face.personGroup) : <code>object</code>
-            * [.create(personGroupId, name, userData)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
+            * [.create(personGroupId, name, userData, recognitionModel)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
             * [.delete(personGroupId)](#Client.face.personGroup.delete) ⇒ <code>Promise</code>
-            * [.get(personGroupId)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
+            * [.get(personGroupId, options)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
             * [.trainingStatus(personGroupId)](#Client.face.personGroup.trainingStatus) ⇒ <code>Promise</code>
             * [.trainingStart(personGroupId)](#Client.face.personGroup.trainingStart) ⇒ <code>Promise</code>
             * [.update(personGroupId, name, userData)](#Client.face.personGroup.update) ⇒ <code>Promise</code>
@@ -217,9 +217,9 @@ Analyze the emotions of one or more faces in an image.
             * [.update(personGroupId, personId, name, userData)](#Client.face.person.update) ⇒ <code>Promise</code>
             * [.list(personGroupId)](#Client.face.person.list) ⇒ <code>Promise</code>
         * [.largePersonGroup](#Client.face.largePersonGroup) : <code>object</code>
-            * [.create(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
+            * [.create(largePersonGroupId, name, userData, recognitionModel)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
             * [.delete(largePersonGroupId)](#Client.face.largePersonGroup.delete) ⇒ <code>Promise</code>
-            * [.get(largePersonGroupId)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
+            * [.get(largePersonGroupId, options)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
             * [.trainingStatus(largePersonGroupId)](#Client.face.largePersonGroup.trainingStatus) ⇒ <code>Promise</code>
             * [.trainingStart(largePersonGroupId)](#Client.face.largePersonGroup.trainingStart) ⇒ <code>Promise</code>
             * [.update(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.update) ⇒ <code>Promise</code>
@@ -247,21 +247,27 @@ Analyze the emotions of one or more faces in an image.
 **Kind**: static namespace of <code>[face](#Client.face)</code>  
 
 * [.faceList](#Client.face.faceList) : <code>object</code>
-    * [.list()](#Client.face.faceList.list) ⇒ <code>Promise</code>
+    * [.list(options)](#Client.face.faceList.list) ⇒ <code>Promise</code>
     * [.create(faceListId, options)](#Client.face.faceList.create) ⇒ <code>Promise</code>
     * [.update(faceListId, options)](#Client.face.faceList.update) ⇒ <code>Promise</code>
     * [.delete(faceListId)](#Client.face.faceList.delete) ⇒ <code>Promise</code>
-    * [.get(faceListId)](#Client.face.faceList.get) ⇒ <code>Promise</code>
+    * [.get(faceListId, options)](#Client.face.faceList.get) ⇒ <code>Promise</code>
     * [.addFace(faceListId, options)](#Client.face.faceList.addFace) ⇒ <code>Promise</code>
     * [.deleteFace(faceListId, persistedFaceId)](#Client.face.faceList.deleteFace) ⇒ <code>Promise</code>
 
 <a name="Client.face.faceList.list"></a>
 
-##### faceList.list() ⇒ <code>Promise</code>
+##### faceList.list(options) ⇒ <code>Promise</code>
 Lists the faceListIds, and associated names and/or userData.
 
 **Kind**: static method of <code>[faceList](#Client.face.faceList)</code>  
 **Returns**: <code>Promise</code> - - Promise resolving with the resulting JSON  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>object</code> | Options object |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
+
 <a name="Client.face.faceList.create"></a>
 
 ##### faceList.create(faceListId, options) ⇒ <code>Promise</code>
@@ -277,6 +283,7 @@ A face list is a list of faces associated to be associated with a given person.
 | options | <code>object</code> | Optional parameters |
 | options.name | <code>string</code> | Name of the face List |
 | options.userData | <code>string</code> | User-provided data associated with the face list. |
+| options.recognitionModel | <code>string</code> | The 'recognitionModel' associated with this face list |
 
 <a name="Client.face.faceList.update"></a>
 
@@ -309,7 +316,7 @@ Deletes an existing person group.
 
 <a name="Client.face.faceList.get"></a>
 
-##### faceList.get(faceListId) ⇒ <code>Promise</code>
+##### faceList.get(faceListId, options) ⇒ <code>Promise</code>
 Gets an existing face list.
 
 **Kind**: static method of <code>[faceList](#Client.face.faceList)</code>  
@@ -318,6 +325,8 @@ Gets an existing face list.
 | Param | Type | Description |
 | --- | --- | --- |
 | faceListId | <code>string</code> | ID of face list to retrieve |
+| options | <code>object</code> | Options object |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
 
 <a name="Client.face.faceList.addFace"></a>
 
@@ -358,9 +367,9 @@ not from the detect method.
 **Kind**: static namespace of <code>[face](#Client.face)</code>  
 
 * [.personGroup](#Client.face.personGroup) : <code>object</code>
-    * [.create(personGroupId, name, userData)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
+    * [.create(personGroupId, name, userData, recognitionModel)](#Client.face.personGroup.create) ⇒ <code>Promise</code>
     * [.delete(personGroupId)](#Client.face.personGroup.delete) ⇒ <code>Promise</code>
-    * [.get(personGroupId)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
+    * [.get(personGroupId, options)](#Client.face.personGroup.get) ⇒ <code>Promise</code>
     * [.trainingStatus(personGroupId)](#Client.face.personGroup.trainingStatus) ⇒ <code>Promise</code>
     * [.trainingStart(personGroupId)](#Client.face.personGroup.trainingStart) ⇒ <code>Promise</code>
     * [.update(personGroupId, name, userData)](#Client.face.personGroup.update) ⇒ <code>Promise</code>
@@ -368,7 +377,7 @@ not from the detect method.
 
 <a name="Client.face.personGroup.create"></a>
 
-##### personGroup.create(personGroupId, name, userData) ⇒ <code>Promise</code>
+##### personGroup.create(personGroupId, name, userData, recognitionModel) ⇒ <code>Promise</code>
 Creates a new person group with a user-specified ID.
 A person group is one of the most important parameters for the Identification API.
 The Identification searches person faces in a specified person group.
@@ -381,6 +390,7 @@ The Identification searches person faces in a specified person group.
 | personGroupId | <code>string</code> | Numbers, en-us letters in lower case, '-', '_'. Max length: 64 |
 | name | <code>string</code> | Person group display name. The maximum length is 128. |
 | userData | <code>string</code> | User-provided data attached to the group. The size limit is 16KB. |
+| recognitionModel | <code>string</code> | The 'recognitionModel' associated with this person group |
 
 <a name="Client.face.personGroup.delete"></a>
 
@@ -396,7 +406,7 @@ Deletes an existing person group.
 
 <a name="Client.face.personGroup.get"></a>
 
-##### personGroup.get(personGroupId) ⇒ <code>Promise</code>
+##### personGroup.get(personGroupId, options) ⇒ <code>Promise</code>
 Gets an existing person group.
 
 **Kind**: static method of <code>[personGroup](#Client.face.personGroup)</code>  
@@ -405,6 +415,8 @@ Gets an existing person group.
 | Param | Type | Description |
 | --- | --- | --- |
 | personGroupId | <code>string</code> | Name of person group to get |
+| options | <code>object</code> | Options object |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
 
 <a name="Client.face.personGroup.trainingStatus"></a>
 
@@ -462,6 +474,7 @@ List person groups’s pesonGroupId, name, and userData.
 | options | <code>object</code> | List opentions |
 | options.start | <code>string</code> | List person groups from the least personGroupId greater than the "start". It contains no more than 64 characters. Default is empty. |
 | options.top | <code>integer</code> | The number of person groups to list, ranging in [1, 1000]. Default is 1000. |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
 
 <a name="Client.face.person"></a>
 
@@ -617,9 +630,9 @@ Lists all persons in a person group, with the person information.
 **Kind**: static namespace of <code>[face](#Client.face)</code>  
 
 * [.largePersonGroup](#Client.face.largePersonGroup) : <code>object</code>
-    * [.create(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
+    * [.create(largePersonGroupId, name, userData, recognitionModel)](#Client.face.largePersonGroup.create) ⇒ <code>Promise</code>
     * [.delete(largePersonGroupId)](#Client.face.largePersonGroup.delete) ⇒ <code>Promise</code>
-    * [.get(largePersonGroupId)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
+    * [.get(largePersonGroupId, options)](#Client.face.largePersonGroup.get) ⇒ <code>Promise</code>
     * [.trainingStatus(largePersonGroupId)](#Client.face.largePersonGroup.trainingStatus) ⇒ <code>Promise</code>
     * [.trainingStart(largePersonGroupId)](#Client.face.largePersonGroup.trainingStart) ⇒ <code>Promise</code>
     * [.update(largePersonGroupId, name, userData)](#Client.face.largePersonGroup.update) ⇒ <code>Promise</code>
@@ -627,7 +640,7 @@ Lists all persons in a person group, with the person information.
 
 <a name="Client.face.largePersonGroup.create"></a>
 
-##### largePersonGroup.create(largePersonGroupId, name, userData) ⇒ <code>Promise</code>
+##### largePersonGroup.create(largePersonGroupId, name, userData, recognitionModel) ⇒ <code>Promise</code>
 Create a new large person group with user-specified largePersonGroupId, name, and optional userData.
 A large person group is the container of the uploaded person data, including face images and face recognition feature, and up to 1,000,000 people.
 The Identify() method searches person faces in a specified large person group.
@@ -640,6 +653,7 @@ The Identify() method searches person faces in a specified large person group.
 | largePersonGroupId | <code>string</code> | Numbers, en-us letters in lower case, '-', '_'. Max length: 64 |
 | name | <code>string</code> | Person group display name. The maximum length is 128. |
 | userData | <code>string</code> | User-provided data attached to the group. The size limit is 16KB. |
+| recognitionModel | <code>string</code> | The 'recognitionModel' associated with this person group |
 
 <a name="Client.face.largePersonGroup.delete"></a>
 
@@ -655,7 +669,7 @@ Deletes an existing large person group.
 
 <a name="Client.face.largePersonGroup.get"></a>
 
-##### largePersonGroup.get(largePersonGroupId) ⇒ <code>Promise</code>
+##### largePersonGroup.get(largePersonGroupId, options) ⇒ <code>Promise</code>
 Gets an existing large person group.
 
 **Kind**: static method of <code>[largePersonGroup](#Client.face.largePersonGroup)</code>  
@@ -664,6 +678,8 @@ Gets an existing large person group.
 | Param | Type | Description |
 | --- | --- | --- |
 | largePersonGroupId | <code>string</code> | ID of large person group to get |
+| options | <code>object</code> | Options object |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
 
 <a name="Client.face.largePersonGroup.trainingStatus"></a>
 
@@ -724,6 +740,7 @@ List all existing large person groups’s largePesonGroupId, name, and userData.
 | options | <code>object</code> | List opentions |
 | options.start | <code>string</code> | List large person groups from the least largePersonGroupId greater than the "start". It contains no more than 64 characters. Default is empty. |
 | options.top | <code>integer</code> | The number of large person groups to list, ranging in [1, 1000]. Default is 1000. |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not. The default value is false. |
 
 <a name="Client.face.largePersonGroupPerson"></a>
 
@@ -901,6 +918,8 @@ and Find Similar.
 | options.path | <code>string</code> | Path to image to be used |
 | options.data | <code>string</code> | Image as a binary buffer |
 | options.returnFaceId | <code>boolean</code> | Include face ID in response? |
+| options.recognitionModel | <code>string</code> | recogntion model to use for detect (default recognition_01) |
+| options.returnRecognitionModel | <code>boolean</code> | Return 'recognitionModel' or not |
 | options.analyzesAccessories | <code>boolean</code> | Analyze accessories? |
 | options.analyzesAge | <code>boolean</code> | Analyze age? |
 | options.analyzesBlur | <code>boolean</code> | Analyze blur? |

@@ -15,6 +15,11 @@ const largePersonGroupPath = '/largepersongroups';
 const largePersonGroupPersonPath = '/largepersongroups';
 const faceListPath    = '/facelists';
 
+const RECOGNITION_MODEL = {
+    recognition_01: 'recognition_01',
+    recognition_02: 'recognition_02',
+}
+
 /**
  * @namespace
  * @memberof Client
@@ -145,6 +150,8 @@ var face = function (key, host) {
      * @param  {string}  options.path                   - Path to image to be used
      * @param  {string}  options.data                   - Image as a binary buffer
      * @param  {boolean} options.returnFaceId           - Include face ID in response?
+     * @param  {string}  options.recognitionModel       - recogntion model to use for detect (default recognition_01)
+     * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not
      * @param  {boolean} options.analyzesAccessories    - Analyze accessories?
      * @param  {boolean} options.analyzesAge            - Analyze age?
      * @param  {boolean} options.analyzesBlur           - Analyze blur?
@@ -181,6 +188,8 @@ var face = function (key, host) {
             }
             qs = {
                 returnFaceId: !!options.returnFaceId,
+                recognitionModel: options.recognitionModel || RECOGNITION_MODEL.recognition_01,
+                returnRecognitionModel: !!options.returnRecognitionModel,
                 returnFaceLandmarks: returnFaceLandmarks,
                 returnFaceAttributes: attributes.join()
             };
@@ -341,13 +350,16 @@ var face = function (key, host) {
     var faceList = {
         /**
          * Lists the faceListIds, and associated names and/or userData.
-         * @return {Promise} - Promise resolving with the resulting JSON
+         * @param  {object} options                         - Options object
+         * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not. The default value is false.
+         * @return {Promise}                                - Promise resolving with the resulting JSON
          */
-        list: function () {
+        list: function (options) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + faceListPath,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    qs: options
                 }, function (error, response) {
                     response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
@@ -363,6 +375,7 @@ var face = function (key, host) {
          * @param  {object} options             - Optional parameters
          * @param  {string} options.name        - Name of the face List
          * @param  {string} options.userData    - User-provided data associated with the face list.
+         * @param  {string} options.recognitionModel - The 'recognitionModel' associated with this face list
          * @return {Promise}                    - Promise resolving with the resulting JSON
          */
         create: function (faceListId, options) {
@@ -370,6 +383,7 @@ var face = function (key, host) {
             if (options) {
                 body.name = options.name;
                 body.userData = options.userData;
+                body.recognitionModel = options.recognitionModel || RECOGNITION_MODEL.recognition_01;
             }
             return new _Promise((resolve, reject) => {
                 request.put({
@@ -433,14 +447,17 @@ var face = function (key, host) {
         /**
          * Gets an existing face list.
          *
-         * @param  {string} faceListId          - ID of face list to retrieve
-         * @return {Promise}                    - Promise resolving with the resulting JSON
+         * @param  {string} faceListId                      - ID of face list to retrieve
+         * @param  {object} options                         - Options object
+         * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not. The default value is false.
+         * @return {Promise}                                - Promise resolving with the resulting JSON
          */
-        get: function (faceListId) {
+        get: function (faceListId, options) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + faceListPath + '/' + faceListId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    qs: options
                 }, function (error, response) {
                     response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
@@ -506,9 +523,10 @@ var face = function (key, host) {
          * @param  {string} personGroupId       - Numbers, en-us letters in lower case, '-', '_'. Max length: 64
          * @param  {string} name                - Person group display name. The maximum length is 128.
          * @param  {string} userData            - User-provided data attached to the group. The size limit is 16KB.
+         * @param  {string} recognitionModel    - The 'recognitionModel' associated with this person group
          * @return {Promise}                    - Promise resolving with the resulting JSON
          */
-        create: function (personGroupId, name, userData) {
+        create: function (personGroupId, name, userData, recognitionModel) {
             return new _Promise((resolve, reject) => {
                 request.put({
                     uri: host + rootPath + personGroupPath + '/' + personGroupId,
@@ -516,7 +534,8 @@ var face = function (key, host) {
                     json: true,
                     body: {
                         name: name,
-                        userData: userData
+                        userData: userData,
+                        recognitionModel: recognitionModel ||  RECOGNITION_MODEL.recognition_01
                     }
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
@@ -545,14 +564,17 @@ var face = function (key, host) {
         /**
          * Gets an existing person group.
          *
-         * @param  {string} personGroupId       - Name of person group to get
-         * @return {Promise}                    - Promise resolving with the resulting JSON
+         * @param  {string} personGroupId                   - Name of person group to get
+         * @param  {object} options                         - Options object
+         * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not. The default value is false.
+         * @return {Promise}                                - Promise resolving with the resulting JSON
          */
-        get: function (personGroupId) {
-            return new _Promise((resolve, reject) => {
+        get: function (personGroupId, options) {
+            return new _Promise((resolve, reject) => {              
                 request({
                     uri: host + rootPath + personGroupPath + '/' + personGroupId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    qs: options
                 }, function (error, response) {
                     response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
@@ -629,6 +651,7 @@ var face = function (key, host) {
          * @param  {object} options             - List opentions
          * @param  {string} options.start       - List person groups from the least personGroupId greater than the "start". It contains no more than 64 characters. Default is empty.
          * @param  {integer} options.top        - The number of person groups to list, ranging in [1, 1000]. Default is 1000.
+         * @param  {boolean} options.returnRecognitionModel  - Return 'recognitionModel' or not. The default value is false.
          * @return {Promise}                    - Promise resolving with the resulting JSON
          */
         list: function (options) {
@@ -850,9 +873,10 @@ var face = function (key, host) {
          * @param  {string} largePersonGroupId  - Numbers, en-us letters in lower case, '-', '_'. Max length: 64
          * @param  {string} name                - Person group display name. The maximum length is 128.
          * @param  {string} userData            - User-provided data attached to the group. The size limit is 16KB.
+         * @param  {string} recognitionModel    - The 'recognitionModel' associated with this person group
          * @return {Promise}                    - Promise resolving with the resulting JSON
          */
-        create: function (largePersonGroupId, name, userData) {
+        create: function (largePersonGroupId, name, userData, recognitionModel) {
             return new _Promise((resolve, reject) => {
                 request.put({
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId,
@@ -860,7 +884,8 @@ var face = function (key, host) {
                     json: true,
                     body: {
                         name: name,
-                        userData: userData
+                        userData: userData,
+                        recognitionModel: recognitionModel ||  RECOGNITION_MODEL.recognition_01
                     }
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
@@ -889,14 +914,17 @@ var face = function (key, host) {
         /**
          * Gets an existing large person group.
          *
-         * @param  {string} largePersonGroupId  - ID of large person group to get
-         * @return {Promise}                    - Promise resolving with the resulting JSON
+         * @param  {string} largePersonGroupId              - ID of large person group to get
+         * @param  {object} options                         - Options object
+         * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not. The default value is false.
+         * @return {Promise}                                - Promise resolving with the resulting JSON
          */
-        get: function (largePersonGroupId) {
+        get: function (largePersonGroupId, options) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    qs: options
                 }, function (error, response) {
                     response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
@@ -976,6 +1004,7 @@ var face = function (key, host) {
          * @param  {object} options             - List opentions
          * @param  {string} options.start       - List large person groups from the least largePersonGroupId greater than the "start". It contains no more than 64 characters. Default is empty.
          * @param  {integer} options.top        - The number of large person groups to list, ranging in [1, 1000]. Default is 1000.
+         * @param  {boolean} options.returnRecognitionModel - Return 'recognitionModel' or not. The default value is false.
          * @return {Promise}                    - Promise resolving with the resulting JSON
          */
         list: function (options) {
