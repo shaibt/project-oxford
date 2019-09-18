@@ -81,8 +81,11 @@ var face = function (key, host) {
                 qs: options,
                 body: fs.readFileSync(image)
             }, (error, response) => {
-                response.body = JSON.parse(response.body);
-                _return(error, response, resolve, reject);
+                try {
+                    response.body = JSON.parse(response.body);
+                } finally {
+                    _return(error, response, resolve, reject);
+                }
             });
         });
     }
@@ -109,8 +112,11 @@ var face = function (key, host) {
                 body: buffer,
                 qs: options
             }, (error, response) => {
-                response.body = JSON.parse(response.body);
-                _return(error, response, resolve, reject);
+                try {
+                    response.body = JSON.parse(response.body);
+                } finally {
+                    _return(error, response, resolve, reject);
+                }
             });
         });
     }
@@ -359,9 +365,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + faceListPath,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -457,9 +463,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + faceListPath + '/' + faceListId,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -574,9 +580,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + personGroupPath + '/' + personGroupId,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -594,9 +600,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + personGroupPath + '/' + personGroupId + '/training',
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -659,9 +665,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + personGroupPath,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -748,9 +754,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + personPath + '/' + personGroupId + '/persons/' + personId + '/persistedFaces/' + persistedFaceId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
@@ -807,9 +813,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + personPath + '/' + personGroupId + '/persons/' + personId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
@@ -851,9 +857,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + personPath + '/' + personGroupId + '/persons',
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
@@ -924,9 +930,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -945,9 +951,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId + '/training',
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -1012,9 +1018,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + largePersonGroupPath,
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, function (error, response) {
-                    response.body = JSON.parse(response.body);
                     return _return(error, response, resolve, reject);
                 });
             });
@@ -1107,9 +1113,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + largePersonGroupPersonPath + '/' + largePersonGroupId + '/persons/' + personId + '/persistedFaces/' + persistedFaceId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
@@ -1168,9 +1174,9 @@ var face = function (key, host) {
             return new _Promise((resolve, reject) => {
                 request({
                     uri: host + rootPath + largePersonGroupPersonPath + '/' + largePersonGroupId + '/persons/' + personId,
-                    headers: {'Ocp-Apim-Subscription-Key': key}
+                    headers: {'Ocp-Apim-Subscription-Key': key},
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
@@ -1213,9 +1219,9 @@ var face = function (key, host) {
                 request({
                     uri: host + rootPath + largePersonGroupPersonPath + '/' + largePersonGroupId + '/persons',
                     headers: {'Ocp-Apim-Subscription-Key': key},
-                    qs: options
+                    qs: options,
+                    json: true,
                 }, (error, response) => {
-                    response.body = JSON.parse(response.body);
                     _return(error, response, resolve, reject);
                 });
             });
