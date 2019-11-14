@@ -454,7 +454,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + faceListPath + '/' + faceListId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -519,7 +520,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + faceListPath + '/' + faceListId + '/persistedFaces/' + persistedFaceId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -571,7 +573,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + personGroupPath + '/' + personGroupId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -632,7 +635,8 @@ var face = function face(key, host) {
             return new _Promise(function (resolve, reject) {
                 request.post({
                     uri: host + rootPath + personGroupPath + '/' + personGroupId + '/train',
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -728,7 +732,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + personPath + '/' + personGroupId + '/persons/' + personId + '/persistedFaces/' + persistedFaceId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -814,7 +819,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + personPath + '/' + personGroupId + '/persons/' + personId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -931,7 +937,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -994,7 +1001,8 @@ var face = function face(key, host) {
             return new _Promise(function (resolve, reject) {
                 request.post({
                     uri: host + rootPath + largePersonGroupPath + '/' + largePersonGroupId + '/train',
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -1096,7 +1104,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + largePersonGroupPersonPath + '/' + largePersonGroupId + '/persons/' + personId + '/persistedFaces/' + persistedFaceId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
@@ -1185,7 +1194,8 @@ var face = function face(key, host) {
                 request({
                     method: 'DELETE',
                     uri: host + rootPath + largePersonGroupPersonPath + '/' + largePersonGroupId + '/persons/' + personId,
-                    headers: { 'Ocp-Apim-Subscription-Key': key }
+                    headers: { 'Ocp-Apim-Subscription-Key': key },
+                    json: true
                 }, function (error, response) {
                     return _return(error, response, resolve, reject);
                 });
